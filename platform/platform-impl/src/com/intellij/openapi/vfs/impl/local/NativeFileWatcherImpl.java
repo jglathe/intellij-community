@@ -144,6 +144,10 @@ public class NativeFileWatcherImpl extends PluggableFileWatcher {
       if ("linux-x86".equals(Platform.RESOURCE_PREFIX)) names = new String[]{"fsnotifier"};
       else if ("linux-x86-64".equals(Platform.RESOURCE_PREFIX)) names = new String[]{"fsnotifier64"};
       else if ("linux-arm".equals(Platform.RESOURCE_PREFIX)) names = new String[]{"fsnotifier-arm"};
+      else {
+        names = new String[]{"fsnotifier-" + Platform.RESOURCE_PREFIX};
+        LOG.info(String.valueOf(new StringBuilder().append("Native file watcher should be ").append(names[0])));
+      }
     }
     if (names == null) return PLATFORM_NOT_SUPPORTED;
 
