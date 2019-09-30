@@ -31,7 +31,7 @@
     <attribute name="target" default="default"/>
     <sequential>
       <java failonerror="true" jar="${project.home}/lib/ant/lib/ant-launcher.jar" fork="true">
-        <jvmarg line="-Xmx912m"/>
+        <jvmarg line="-Xmx2G"/>
         <sysproperty key="jna.nosys" value="true" />
         <sysproperty key="java.awt.headless" value="true"/>
         <sysproperty key="gant.script" value="@{script}"/>
@@ -48,11 +48,14 @@
     <call_gant script="${project.home}/build/scripts/idea_community.gant"/>
   </target>
 
+  <!--
+
   <target name="test" depends="init">
     <call_gant script="${project.home}/build/scripts/tests_in_community.gant"/>
   </target>
+  -!>
 
-  <!-- Creates an updater-full.jar in ${intellij.build.output.root}/artifacts, it includes 'intellij.platform.updater' module with all its dependencies -->
+  <!- Creates an updater-full.jar in ${intellij.build.output.root}/artifacts, it includes 'intellij.platform.updater' module with all its dependencies -->
   <target name="fullupdater" depends="init">
     <call_gant script="${project.home}/build/scripts/idea_community.gant" target="updater-full"/>
   </target>
